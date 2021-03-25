@@ -128,7 +128,7 @@ div.total{
     text-decoration:none;
     position: absolute;
     right: 20%; 
-    bottom: -18%; /*5%*/
+    bottom: -8%; /*5%*/
 }
 .btnMenu:hover {
     background-color:#e6e6e6;
