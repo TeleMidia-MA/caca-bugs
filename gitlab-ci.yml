@@ -1,0 +1,31 @@
+image: docker:git
+services:
+  - docker:dind
+variables:
+  IMAGE: caca_bugs
+  DOCKER_COMPOSE: cd /var/www/domains/caca_bugs && docker-compose
+stages:
+  - build
+  - deploy
+before_script:
+  - apk update
+  - 'which ssh-agent || (apk add openssh-client)'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | ssh-add -
+  - mkdir -p ~/.ssh
+  - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+build:
+  stage: build
+  script:
+    - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} build --no-cache"
+  only:
+    - master
+    - develop
+develop:
+  stage: deploy
+  script:
+    - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} stop"
+    - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} up -d"
+  only:
+    - master
+    - develop
