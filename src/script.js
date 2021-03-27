@@ -343,11 +343,11 @@ function reactToAnswer(result, index, entries){
         initValues(); 
         para = document.createElement("p");
         para.appendChild(document.createTextNode("Resposta Errada! 😞"));
-        divCaixaResposta.appendChild(para);
-        divCaixaResposta.appendChild(document.createElement("BR"));
-        divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfMenu(); return false;\">Menu</a></div>";
-        divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfQuestion("+(index)+"); return false;\">Tentar Novamente</a> ";
-        divPopup.appendChild(divCaixaResposta);
+        divCaixaResposta2.appendChild(para);
+        divCaixaResposta2.appendChild(document.createElement("BR"));
+        divCaixaResposta2.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfMenu(); return false;\">Menu</a></div>";
+        divCaixaResposta2.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfQuestion("+(index)+"); return false;\">Tentar Novamente</a> ";
+        divPopup.appendChild(divCaixaResposta2);
         saveLogSubmit("false", index, entries);
     } 
     document.getElementById("divTotal").appendChild(divPopup);
