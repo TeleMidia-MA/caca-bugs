@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   database:
     image: mysql:5.7
@@ -10,6 +10,8 @@ services:
       MYSQL_DATABASE: caca_bugs
     volumes:
       - database-data:/var/lib/mysql
+    networks:
+      - backend
   web:
     build:
       #context: ./frontend
@@ -24,10 +26,15 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: opECcbQ^tF!EA
       MYSQL_ROOT_PASSWORD: opECcbQ^tF!EA
-  
     expose:
       - "80"
     ports:
       - 5000:80
+    networks:
+      - backend
+      - frontend
 volumes:
   database-data:
+networks:
+   frontend:
+   backend:
