@@ -2,6 +2,6 @@
    define('DB_SERVER', 'db-caca-bugs');
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', 'opECcbQ^tF!EA');
-   define('DB_DATABASE', 'caca_bugs');
+   define('DB_DATABASE', 'caca_bugs_db');
    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE) or die(mysql_error());
 ?>
