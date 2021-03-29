@@ -1,12 +1,15 @@
 image: docker:git
+
 services:
   - docker:dind
 variables:
   IMAGE: caca_bugs
   DOCKER_COMPOSE: cd /var/www/domains/caca_bugs && docker-compose
+  
 stages:
   - build
   - deploy
+  
 before_script:
   - apk update
   - 'which ssh-agent || (apk add openssh-client)'
@@ -14,6 +17,7 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | ssh-add -
   - mkdir -p ~/.ssh
   - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  
 build:
   stage: build
   script:
@@ -21,6 +25,7 @@ build:
   only:
     - master
     - develop
+    
 develop:
   stage: deploy
   script:
