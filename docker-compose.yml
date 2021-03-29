@@ -28,6 +28,20 @@ services:
     ports:
       - 5100:80
       - 5101:8081
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'caca_bugs_phpmyadmin'
+    links:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: opECcbQ^tF!EA
+      MYSQL_USER: root
+      MYSQL_PASSWORD: opECcbQ^tF!EA
+    ports:      
     networks:
       - caca_bugs_default
 volumes:
