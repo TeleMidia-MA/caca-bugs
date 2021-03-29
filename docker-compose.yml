@@ -32,9 +32,9 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: 'caca_bugs_phpmyadmin'
     links:
-      - database
+      - db-caca-bugs
     environment:
-      PMA_HOST: database
+      PMA_HOST: db-caca-bugs
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: 
