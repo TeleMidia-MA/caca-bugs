@@ -37,11 +37,12 @@ services:
       PMA_HOST: database
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: 123456
+      PMA_PASSWORD: 
       MYSQL_ROOT_PASSWORD: opECcbQ^tF!EA
       MYSQL_USER: root
       MYSQL_PASSWORD: opECcbQ^tF!EA
-    ports:      
+    ports:
+      - 51200:80  
     networks:
       - caca_bugs_default
 volumes:
