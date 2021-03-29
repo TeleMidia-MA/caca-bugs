@@ -28,7 +28,6 @@ services:
     ports:
       - 5100:80
       - 5101:8081
-    ports:
     networks:
       - caca_bugs_default
 volumes:
