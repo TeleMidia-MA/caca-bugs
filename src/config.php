@@ -1,5 +1,5 @@
 <?php
-   define('DB_SERVER', 'localhost');
+   define('DB_SERVER', 'database');
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', 'opECcbQ^tF!EA');
    define('DB_DATABASE', 'caca_bugs');
