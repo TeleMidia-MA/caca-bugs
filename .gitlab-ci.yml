@@ -18,9 +18,11 @@ before_script:
   - mkdir -p ~/.ssh
   - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   
+  
 build:
   stage: build
   script:
+    - ssh telemidia@200.137.132.247 "pwd"
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} build --no-cache"
   only:
     - main
