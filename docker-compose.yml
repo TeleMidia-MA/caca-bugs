@@ -17,8 +17,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-      args:
-        REACT_APP_BASE_URL: https://telemidia-ma.com.br/caca_bugs
     container_name: caca_bugs
     environment:
       MYSQL_HOST: database
