@@ -4,6 +4,7 @@ services:
   - docker:dind
 variables:
   IMAGE: caca_bugs
+  DIR: /var/www/domains/caca_bugs
   DOCKER_COMPOSE: cd /var/www/domains/caca_bugs && docker-compose
   
 stages:
@@ -23,7 +24,7 @@ build:
   stage: build
   script:
     - ssh telemidia@200.137.132.247 "pwd"
-    - ssh telemidia@200.137.132.247 "git pull"
+    - ssh telemidia@200.137.132.247 "cd ${DIR} && git pull"
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} build --no-cache"
   only:
     - main
