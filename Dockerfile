@@ -12,3 +12,5 @@ FROM php:8-apache
 #    && docker-php-ext-install -j$(nproc) gd
 
 COPY src/ /var/www/html/
+
+EXPOSE 80
