@@ -23,7 +23,7 @@ build:
   script:
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} build --no-cache"
   only:
-    - master
+    - main
     - develop
     
 develop:
@@ -32,5 +32,5 @@ develop:
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} stop"
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} up -d"
   only:
-    - master
+    - main
     - develop
