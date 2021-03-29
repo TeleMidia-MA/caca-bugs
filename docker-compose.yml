@@ -14,7 +14,7 @@ services:
       - caca_bugs_default
   app-caca-bugs:
     build:
-      #context: ./frontend
+      context: ./
       dockerfile: Dockerfile
       args:
         REACT_APP_BASE_URL: https://telemidia-ma.com.br/caca_bugs

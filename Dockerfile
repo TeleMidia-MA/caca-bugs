@@ -10,6 +10,8 @@ FROM php:8-apache
 #    && docker-php-ext-install -j$(nproc) iconv mcrypt \
 #    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 #    && docker-php-ext-install -j$(nproc) gd
+RUN a2enmod rewrite \
+    && docker-php-ext-install mysqli
 
 COPY src/ /var/www/html/
 
