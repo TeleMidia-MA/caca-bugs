@@ -1,5 +1,5 @@
 <?php
-   define('DB_SERVER', 'database');
+   define('DB_SERVER', 'db-caca-bugs');
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', 'opECcbQ^tF!EA');
    define('DB_DATABASE', 'caca_bugs');
