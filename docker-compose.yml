@@ -10,6 +10,7 @@ services:
       MYSQL_DATABASE: caca_bugs
     volumes:
       - database-data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
     networks:
       - caca_bugs_default
   app-caca-bugs:
