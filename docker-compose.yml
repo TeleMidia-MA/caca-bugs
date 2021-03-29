@@ -29,7 +29,7 @@ services:
     expose:
       - "80"
     ports:
-      - 5000:80
+      - 5100:80
     networks:
       - backend
       - frontend
