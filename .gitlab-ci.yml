@@ -30,6 +30,7 @@ develop:
   stage: deploy
   script:
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} stop"
+    - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} rm -f -s"
     - ssh telemidia@200.137.132.247 "${DOCKER_COMPOSE} up -d"
   only:
     - main
