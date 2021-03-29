@@ -11,7 +11,7 @@ services:
     volumes:
       - database-data:/var/lib/mysql
     networks:
-      - backend
+      - caca_bugs_default
   web:
     build:
       #context: ./frontend
@@ -26,15 +26,12 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: opECcbQ^tF!EA
       MYSQL_ROOT_PASSWORD: opECcbQ^tF!EA
-    expose:
-      - "80"
     ports:
       - 5100:80
+      - 5101:8081
     networks:
-      - backend
-      - frontend
+      - caca_bugs_default
 volumes:
   database-data:
 networks:
-   frontend:
-   backend:
+  caca_bugs_default:
