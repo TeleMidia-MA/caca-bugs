@@ -37,7 +37,7 @@ services:
       PMA_HOST: db-caca-bugs
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: 
+      PMA_PASSWORD: opECcbQ^tF!EA
       MYSQL_ROOT_PASSWORD: opECcbQ^tF!EA
       MYSQL_USER: root
       MYSQL_PASSWORD: opECcbQ^tF!EA
