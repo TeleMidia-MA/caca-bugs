@@ -42,7 +42,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: opECcbQ^tF!EA
     ports:
-      - 51200:80  
+      - 5200:80  
     networks:
       - caca_bugs_default
 volumes:
