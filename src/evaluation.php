@@ -9,7 +9,7 @@
       // username and password sent from form 
       
       $myvalue = mysqli_real_escape_string($db,$_POST['value']);
-      $myuser = mysqli_real_escape_string($_SESSION['id_user']);//mysqli_real_escape_string($db,$user_check);
+      $myuser = $_SESSION['id_user']; //mysqli_real_escape_string($db,$user_check);
       $myquestion = mysqli_real_escape_string($db,$_POST['code']);
       $myhasLiked = mysqli_real_escape_string($db,$_POST['like']);
 
