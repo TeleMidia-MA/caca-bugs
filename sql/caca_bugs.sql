@@ -67,9 +67,11 @@ CREATE TABLE `user` (
 
 CREATE TABLE `evaluation` (
   `id` int(11) AUTO_INCREMENT PRIMARY KEY,
-  `value` boolean NOT NULL,
+  `nota` int(2) NOT NULL,
   `question` int(100) NOT NULL,
-  `user` varchar(100) NOT NULL
+  `user` varchar(100) NOT NULL,
+  `LogDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hasLiked` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
