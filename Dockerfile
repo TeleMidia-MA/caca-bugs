@@ -1,6 +1,8 @@
 # This file is a template, and might need editing before it works on your project.
 FROM php:8-apache
 
+TEMPLATE_PHP_INI=production
+
 # Customize any core extensions here
 #RUN apt-get update && apt-get install -y \
 #        libfreetype6-dev \
