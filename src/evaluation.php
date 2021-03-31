@@ -8,7 +8,7 @@
    $error = "";
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
-      echo $_SERVER['login_user'];
+      //echo $_SERVER['login_user'];
       $myvalue = mysqli_real_escape_string($db,$_POST['value']);
       $myuser = mysqli_real_escape_string($db,$_SESSION['login_user']);
       $myquestion = mysqli_real_escape_string($db,$_POST['code']);
