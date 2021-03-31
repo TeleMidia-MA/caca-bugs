@@ -1,6 +1,7 @@
 <?php
    include("config.php");
    //include('session.php');
+   session_start();
    
    $user_check = $_SESSION['login_user'];
    //session_start();
