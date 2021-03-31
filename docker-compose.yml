@@ -19,6 +19,7 @@ services:
       dockerfile: Dockerfile
     container_name: caca_bugs
     environment:
+      APP_ENV: prod    
       MYSQL_HOST: database
       MYSQL_DATABASE: caca_bugs
       MYSQL_PORT: 3306
