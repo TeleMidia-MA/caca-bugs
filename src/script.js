@@ -275,69 +275,76 @@ function reactToAnswer(result, index, entries){
     var divPopup = document.createElement("DIV");
     divPopup.id = "overlay";
     var divCaixaResposta = document.createElement("DIV");
-    divCaixaResposta.id = "caixaResposta";
-    var divCaixaResposta2 = document.createElement("DIV");
-    divCaixaResposta2.id = "caixaResposta2";
-    
-    
-    //window.alert(entries);
-    if(result){        
+
+    const esta_na_ultima_questao = index == lastIndex
+    const esta_repetindo = index < atualQuestion
+
+    function setTitle(title_msg) {
         para = document.createElement("p");
-        if(index == lastIndex){
-            para.appendChild(document.createTextNode("🎉 Você Venceu o Caça Bugs! 🎉"));
-            divCaixaResposta2.appendChild(para);
-            divCaixaResposta2.appendChild(document.createElement("BR"));
-            divCaixaResposta2.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfMenu(); return false;\">Voltar ao Menu</a></div>";
-            divPopup.appendChild(divCaixaResposta2);
-        } 
-        else{
-            divCaixaResposta.appendChild(para);
-            para.appendChild(document.createTextNode(" 👏🏻 Parabéns, Você Acertou!! 👏🏻"));
-        }
-        
+        para.appendChild(document.createTextNode(title_msg));
+        divCaixaResposta.appendChild(para);
         divCaixaResposta.appendChild(document.createElement("BR"));
-        
-        if(index >= atualQuestion){
+    }
+    function setOpcoes() {
+        //divCaixaResposta.appendChild(document.createElement("BR"));
+        if(Array.from(arguments).includes("menu_principal")){
+            divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfMenu(); return false;\">Menu</a> ";
+        }
+        if(Array.from(arguments).includes("proxima_questao")){
+            divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfQuestion2("+(index+1)+"); return false;\">Próxima Questão</a> ";
+        }
+        if(Array.from(arguments).includes("feedback")){
             para = document.createElement("p");
             para.appendChild(document.createTextNode("Você Gostou da Questão?"));
             divCaixaResposta.appendChild(para);
-            divCaixaResposta.appendChild(document.createElement("BR"));
-
+            
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-0-0' onclick = \"postFeedback(0, "+(index+1)+", 0); return false;\">SIM</a> ";
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-0-1' onclick = \"postFeedback(0, "+(index+1)+", 1); return false;\">NÃO</a> ";
             divPopup.appendChild(divCaixaResposta);
-            //
-
+            
             para = document.createElement("p");
             para.appendChild(document.createTextNode("Qual Foi a Dificuldade Para Você?"));
             divCaixaResposta.appendChild(para);
-            divCaixaResposta.appendChild(document.createElement("BR"));
-
+            
             //divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfQuestion("+(index)+"); return false;\">Try Again</a> ";
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-1-1' onclick = \"postFeedback(1, "+(index+1)+", 1); return false;\">Muito Fácil</a> ";
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-1-2' onclick = \"postFeedback(1, "+(index+1)+", 2); return false;\">Fácil</a> ";
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-1-3' onclick = \"postFeedback(1, "+(index+1)+", 3); return false;\">Média</a> ";
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-1-4' onclick = \"postFeedback(1, "+(index+1)+", 4); return false;\">Difícil</a> ";
             divCaixaResposta.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" id='feedback-bt-1-5' onclick = \"postFeedback(1, "+(index+1)+", 5); return false;\">Muito Difícil</a> ";
-            divPopup.appendChild(divCaixaResposta);
-        }else{
-            //sem próxima na última questão
-            if(index != lastIndex){
-                divCaixaResposta2.appendChild(para);
-                divCaixaResposta2.appendChild(document.createElement("BR"));
-                divCaixaResposta2.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfMenu(); return false;\">Menu</a> ";
-                divCaixaResposta2.innerHTML += "<a href=\"#\" class=\"caixaRespostaButton\" onclick = \"loadHTMLOfQuestion2("+(index+1)+"); return false;\">Próxima Questão</a> ";
-                divPopup.appendChild(divCaixaResposta2);
-            }
         }
-        
+    }
+    //se respondeu certo
+    if(result){
+        if(!esta_na_ultima_questao && !esta_repetindo){
+            setTitle("👏🏻 Parabéns, Você Acertou!! 👏🏻")
+            setOpcoes("feedback")
+            divCaixaResposta.id = "caixaResposta";
+        }
+        if(!esta_na_ultima_questao && esta_repetindo){
+            setTitle("👏🏻 Parabéns, Você Acertou!! 👏🏻")
+            setOpcoes("menu_principal", "proxima_questao")
+            divCaixaResposta.id = "caixaResposta2";
+        }
+        if(esta_na_ultima_questao && !esta_repetindo){
+            setTitle("🎉 Você Venceu o Caça Bugs! 🎉")
+            setOpcoes("feedback")
+            divCaixaResposta.id = "caixaResposta";
+        }
+        if(esta_na_ultima_questao && esta_repetindo){
+            setTitle("🎉 Você Venceu o Caça Bugs! 🎉")
+            setOpcoes("menu_principal")
+            divCaixaResposta.id = "caixaResposta2";
+        }
+        divPopup.appendChild(divCaixaResposta);
+
         //loadHTMLOfQuestion(index+1); 
         if(index>=atualQuestion){
             atualQuestion = index+1;
             setLastQuestion();            
+        }else{
+            saveLogSubmit("true", index, entries);
         }
-        else
-        saveLogSubmit("true", index, entries);
     }else{
         /*window.alert(\"Tente Novamente\");*/ 
         initValues(); 
